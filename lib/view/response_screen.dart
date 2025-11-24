@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weatherapp_starter_project/screens/weather_data_screen.dart';
+import 'package:weatherapp_starter_project/view/HomeScreen.dart';
 
 class ResponseScreen extends StatelessWidget {
   const ResponseScreen({super.key});
@@ -19,7 +19,7 @@ class ResponseScreen extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => WeatherDataScreen()),
+              MaterialPageRoute(builder: (context) => HomeScreen()),
             );
           },
           child: const Center(child: Text('Tap')),

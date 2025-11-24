@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
-import 'package:weatherapp_starter_project/api_endpoints.dart';
+import 'package:weatherapp_starter_project/repository/api_endpoints.dart';
 import 'package:weatherapp_starter_project/models/weather_data_model.dart';
 
 class Weatherapiresonse with ChangeNotifier {
