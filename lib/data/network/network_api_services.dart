@@ -2,11 +2,11 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:weatherapp_starter_project/data/app_exceptions.dart';
-import 'package:weatherapp_starter_project/data/network/base_api_response.dart';
+import 'package:weatherapp_starter_project/data/network/base_api_services.dart';
 import 'package:http/http.dart' as http;
 import 'package:weatherapp_starter_project/utils/Utils.dart';
 
-class NetworkApiResponse implements BaseApiResponse {
+class NetworkApiServices implements BaseApiServices {
   @override
   Future<dynamic> getGetApiResponse(String url) async {
     // dynamic jsonResponse;

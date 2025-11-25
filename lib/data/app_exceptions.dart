@@ -36,3 +36,7 @@ class NotFoundException extends AppExceptions {
 class InternalServerException extends AppExceptions {
   InternalServerException([String? message]) : super(message, 'InternalServerException: ');
 }
+
+class LocationNotEnabledException extends AppExceptions {
+  LocationNotEnabledException([String? message]) : super(message, 'LocationNotEnabledException: ');
+}

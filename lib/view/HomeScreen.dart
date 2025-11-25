@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:weatherapp_starter_project/api_response/weatherapiresonse.dart';
-import 'package:weatherapp_starter_project/view_model/weather_data_view_model.dart';
+import 'package:weatherapp_starter_project/view/widgets/current_weather_widget.dart';
+import 'package:weatherapp_starter_project/view/widgets/header_widget.dart';
+import 'package:weatherapp_starter_project/view_model/get_location_&_weather_data_view_model.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,22 +17,61 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    final providerLocation = Provider.of<WeatherDataViewModel>(context, listen: false);
+    final providerLocation = Provider.of<GetLocation_WeatherData_ViewModel>(
+      context,
+      listen: false,
+    );
     if (providerLocation.getLoading) {
-    providerLocation.getLocation();
+      providerLocation.getLocation();
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+    );
+
+    debugPrint('build function called');
     // ignore: unused_local_variable
-    final provider = Provider.of<Weatherapiresonse>(context, listen: false);
+    // final weatherData_VM_provider = Provider.of<GetLocationViewModel>(
+    //   context,
+    //   listen: false,
+    // );
+
     return Scaffold(
-      appBar: AppBar(centerTitle: true, title: const Text('Weather App')),
-      body: Container(),
+      body: SafeArea(
+        child: Selector<GetLocation_WeatherData_ViewModel, bool>(
+          selector: (_, provider) => provider.getLoading,
+          builder: (context, value, child) {
+            debugPrint('selector function called');
+            return value
+                ? Center(child: CircularProgressIndicator())
+                : Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: ListView(
+                      scrollDirection: Axis.vertical,
+                      children: [
+                        SizedBox(height: 20),
+                        const HeaderWidget(),
+                        SizedBox(height: 20),
+                        const CurrentWeatherWidget(),
+                      ],
+                    ),
+                  );
+          },
+        ),
+      ),
     );
   }
 }
+
+
+
+
+
+
+
 
 // the program i first cretaed to test result of api response 
 

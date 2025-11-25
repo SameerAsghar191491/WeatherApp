@@ -1,8 +1,14 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:weatherapp_starter_project/data/app_exceptions.dart';
+import 'package:weatherapp_starter_project/models/weather_data_model.dart';
+import 'package:weatherapp_starter_project/repository/weather_data_api_call.dart';
 import 'package:weatherapp_starter_project/utils/Utils.dart';
 
-class WeatherDataViewModel with ChangeNotifier {
+// ignore: camel_case_types
+class GetLocation_WeatherData_ViewModel with ChangeNotifier {
   bool _loading = true;
   double _latitude = 0.0;
   double _longitude = 0.0;
@@ -10,6 +16,14 @@ class WeatherDataViewModel with ChangeNotifier {
   bool get getLoading => _loading;
   double get getlatitute => _latitude;
   double get getlongitude => _longitude;
+
+  WeatherDataApiCall weatherDataApiCall = WeatherDataApiCall();
+
+  WeatherDataModel weatherData = WeatherDataModel();
+
+  void setWeatherDataintoModel(newValue) {
+    weatherData = newValue;
+  }
 
   void setloading(bool newValue) {
     _loading = newValue;
@@ -23,7 +37,11 @@ class WeatherDataViewModel with ChangeNotifier {
     isServiceEnabled = await Geolocator.isLocationServiceEnabled();
 
     if (!isServiceEnabled) {
-      return Future.error("Location Not Enabled");
+      Timer(Duration(seconds: 1), () {
+        Utils.toastmessage('Location Not Enabled');
+        setloading(false);
+      });
+      return LocationNotEnabledException("Location Not Enabled");
     }
 
     locationPermission = await Geolocator.checkPermission();
@@ -43,7 +61,17 @@ class WeatherDataViewModel with ChangeNotifier {
         .then((value) {
           _latitude = value.latitude;
           _longitude = value.longitude;
-          setloading(false);
+          // debugPrint("$_latitude");
+          // debugPrint("$_longitude");
+          weatherDataApiCall
+              .getWeatherApiResponse(
+                getlatitute.toString(),
+                getlongitude.toString(),
+              )
+              .then((value) {
+                setWeatherDataintoModel(value);
+                setloading(false);
+              });
         })
         .onError((error, stackTrace) {
           Utils.toastmessage(error.toString());
