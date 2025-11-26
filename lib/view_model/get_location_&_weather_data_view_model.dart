@@ -8,14 +8,16 @@ import 'package:weatherapp_starter_project/repository/weather_data_api_call.dart
 import 'package:weatherapp_starter_project/utils/Utils.dart';
 
 // ignore: camel_case_types
-class GetLocation_WeatherData_ViewModel with ChangeNotifier {
+class GL_WD_ViewModel with ChangeNotifier {
   bool _loading = true;
   double _latitude = 0.0;
   double _longitude = 0.0;
+  int _selectedContainer = 0;
 
   bool get getLoading => _loading;
   double get getlatitute => _latitude;
   double get getlongitude => _longitude;
+  int get selectedContainer => _selectedContainer;
 
   WeatherDataApiCall weatherDataApiCall = WeatherDataApiCall();
 
@@ -28,6 +30,12 @@ class GetLocation_WeatherData_ViewModel with ChangeNotifier {
   void setloading(bool newValue) {
     _loading = newValue;
     notifyListeners();
+  }
+
+  int selectContainer(int index) {
+    _selectedContainer = index;
+    notifyListeners();
+    return selectedContainer;
   }
 
   getLocation() async {

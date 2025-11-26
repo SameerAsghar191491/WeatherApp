@@ -9,9 +9,7 @@ void main() {
     MultiProvider(
       providers: [
         // ChangeNotifierProvider(create: (context) => Weatherapiresonse()),
-        ChangeNotifierProvider(
-          create: (context) => GetLocation_WeatherData_ViewModel(),
-        ),
+        ChangeNotifierProvider(create: (context) => GL_WD_ViewModel()),
       ],
       child: const MyApp(),
     ),

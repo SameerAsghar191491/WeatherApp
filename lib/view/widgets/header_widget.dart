@@ -22,8 +22,10 @@ class _HeaderWidgetState extends State<HeaderWidget> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    final weatherdataVmProvider =
-        Provider.of<GetLocation_WeatherData_ViewModel>(context, listen: false);
+    final weatherdataVmProvider = Provider.of<GL_WD_ViewModel>(
+      context,
+      listen: false,
+    );
     getAddress(
       weatherdataVmProvider.getlatitute,
       weatherdataVmProvider.getlongitude,
@@ -32,7 +34,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
 
   getAddress(lat, lon) async {
     List<Placemark> placemark = await placemarkFromCoordinates(lat, lon);
-    print(placemark[0]);
+    // print(placemark[0]);
     // print("lat: $lat, lon: $lon");
     setState(() {
       city = placemark[0].locality!;
@@ -47,7 +49,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
       children: [
         Container(
           // color: Colors.amber,
-          // margin: EdgeInsets.only(left: 20, right: 20),
+          margin: EdgeInsets.only(left: 20, right: 20),
           // alignment: Alignment.topLeft,
           child: Text(
             city,
@@ -60,7 +62,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
         ),
         Container(
           // color: Colors.amber,
-          // margin: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+          margin: EdgeInsets.only(left: 20, right: 20),
           // alignment: Alignment.topLeft,
           child: Text(
             date,

@@ -39,7 +39,7 @@ class WeatherDataModel {
 }
 
 class Current {
-  double? temp;
+  int? temp;
   int? humidity;
   int? clouds;
   double? windSpeed;
@@ -54,7 +54,7 @@ class Current {
   });
 
   Current.fromJson(Map<String, dynamic> json) {
-    temp = (json['temp'] as num).toDouble();
+    temp = (json['temp'] as num).round();
     humidity = (json['humidity']);
     clouds = json['clouds'];
     windSpeed = (json['wind_speed'] as num?)?.toDouble();
@@ -105,6 +105,7 @@ class Weather {
 }
 
 class Hourly {
+  int? dt;
   double? temp;
   int? humidity;
   int? clouds;
@@ -113,6 +114,7 @@ class Hourly {
   Rain? rain;
 
   Hourly({
+    this.dt,
     this.temp,
     this.humidity,
     this.clouds,
@@ -122,7 +124,8 @@ class Hourly {
   });
 
   Hourly.fromJson(Map<String, dynamic> json) {
-    temp = (json['temp'] as num).toDouble();
+    dt = (json['dt'] as num?)?.toInt();
+    temp = (json['temp'] as num?)?.toDouble();
     humidity = json['humidity'];
     clouds = json['clouds'];
     windSpeed = (json['wind_speed'] as num?)?.toDouble();
@@ -137,6 +140,7 @@ class Hourly {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
+    data['dt'] = dt;
     data['temp'] = temp;
     data['humidity'] = humidity;
     data['clouds'] = clouds;
@@ -168,6 +172,7 @@ class Rain {
 }
 
 class Daily {
+  int? dt;
   Temp? temp;
   int? humidity;
   double? windSpeed;
@@ -176,6 +181,7 @@ class Daily {
   double? rain;
 
   Daily({
+    this.dt,
     this.temp,
     this.humidity,
     this.windSpeed,
@@ -185,6 +191,7 @@ class Daily {
   });
 
   Daily.fromJson(Map<String, dynamic> json) {
+    dt = (json['dt'] as num?)?.toInt();
     temp = json['temp'] != null ? Temp.fromJson(json['temp']) : null;
     humidity = json['humidity'];
     windSpeed = (json['wind_speed'] as num?)?.toDouble();
@@ -216,8 +223,8 @@ class Daily {
 
 class Temp {
   double? day;
-  double? min;
-  double? max;
+  int? min;
+  int? max;
   double? night;
   double? eve;
   double? morn;
@@ -226,8 +233,8 @@ class Temp {
 
   Temp.fromJson(Map<String, dynamic> json) {
     day = (json['day'] as num?)?.toDouble();
-    min = (json['min'] as num?)?.toDouble();
-    max = (json['max'] as num?)?.toDouble();
+    min = (json['min'] as num?)?.round();
+    max = (json['max'] as num?)?.round();
     night = (json['night'] as num?)?.toDouble();
     eve = (json['eve'] as num?)?.toDouble();
     morn = (json['morn'] as num?)?.toDouble();

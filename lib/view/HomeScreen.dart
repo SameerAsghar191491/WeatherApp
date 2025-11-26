@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:weatherapp_starter_project/view/widgets/current_weather_widget.dart';
+import 'package:weatherapp_starter_project/view/widgets/daily_weather_widget.dart';
 import 'package:weatherapp_starter_project/view/widgets/header_widget.dart';
 import 'package:weatherapp_starter_project/view/widgets/hourly_weather_widget.dart';
 import 'package:weatherapp_starter_project/view_model/get_location_&_weather_data_view_model.dart';
@@ -18,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    final providerLocation = Provider.of<GetLocation_WeatherData_ViewModel>(
+    final providerLocation = Provider.of<GL_WD_ViewModel>(
       context,
       listen: false,
     );
@@ -42,25 +43,36 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       body: SafeArea(
-        child: Selector<GetLocation_WeatherData_ViewModel, bool>(
+        child: Selector<GL_WD_ViewModel, bool>(
           selector: (_, provider) => provider.getLoading,
           builder: (context, value, child) {
             debugPrint('selector function called');
             return value
                 ? Center(child: CircularProgressIndicator())
-                : Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: ListView(
-                      scrollDirection: Axis.vertical,
-                      children: [
-                        SizedBox(height: 20),
-                        const HeaderWidget(),
-                        SizedBox(height: 20),
-                        const CurrentWeatherWidget(),
-                        SizedBox(height: 20),
-                        const HourlyWeatherWidget(),
-                      ],
-                    ),
+                : ListView(
+                    scrollDirection: Axis.vertical,
+                    children: [
+                      SizedBox(height: 20),
+                      // Container(
+                      // color: Colors.amber,
+                      // child:
+                      const HeaderWidget(),
+                      // ),
+                      SizedBox(height: 20),
+                      // Container(
+                      // color: Colors.amber,
+                      // child:
+                      const CurrentWeatherWidget(),
+                      // ),
+                      SizedBox(height: 20),
+                      // Container(
+                      // color: Colors.amber,
+                      // child:
+                      const HourlyWeatherWidget(),
+                      SizedBox(height: 20),
+                      // ),
+                      const DailyWeatherWidget(),
+                    ],
                   );
           },
         ),
