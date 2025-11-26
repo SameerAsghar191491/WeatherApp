@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:weatherapp_starter_project/view/widgets/current_weather_widget.dart';
 import 'package:weatherapp_starter_project/view/widgets/header_widget.dart';
+import 'package:weatherapp_starter_project/view/widgets/hourly_weather_widget.dart';
 import 'package:weatherapp_starter_project/view_model/get_location_&_weather_data_view_model.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -48,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
             return value
                 ? Center(child: CircularProgressIndicator())
                 : Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: ListView(
                       scrollDirection: Axis.vertical,
                       children: [
@@ -56,6 +57,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         const HeaderWidget(),
                         SizedBox(height: 20),
                         const CurrentWeatherWidget(),
+                        SizedBox(height: 20),
+                        const HourlyWeatherWidget(),
                       ],
                     ),
                   );
