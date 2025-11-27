@@ -42,7 +42,8 @@ class HourlyWeatherWidget extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: hourlyWeatherLength,
                   itemBuilder: (context, index) {
-                    final timeStamp = hwProvider.apiResponse.data!.hourly![index].dt;
+                    final timeStamp =
+                        hwProvider.apiResponse.data!.hourly![index].dt;
                     // final selectedIndex = selectedContainer(index);
                     return Padding(
                       padding: const EdgeInsets.only(left: 15, right: 10),

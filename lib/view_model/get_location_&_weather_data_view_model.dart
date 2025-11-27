@@ -74,19 +74,20 @@ class GL_WD_ViewModel with ChangeNotifier {
     return await Geolocator.getCurrentPosition(
           locationSettings: LocationSettings(accuracy: LocationAccuracy.high),
         )
-        .then((value) {
+        .then((value) async {
           setApiResponse(ApiResponse.loading());
           _latitude = value.latitude;
           _longitude = value.longitude;
           // debugPrint("$_latitude");
           // debugPrint("$_longitude");
-          weatherDataApiCall
+          await weatherDataApiCall
               .getWeatherApiResponse(
                 getlatitute.toString(),
                 getlongitude.toString(),
               )
               .then((value) {
                 // setWeatherDataintoModel(value);
+                // debugPrint("weatherApiCall done");
                 setApiResponse(ApiResponse.completed(value));
                 // setloading(false);
               });

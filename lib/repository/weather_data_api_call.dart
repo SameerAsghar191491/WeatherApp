@@ -15,15 +15,15 @@ class WeatherDataApiCall {
   Future<WeatherDataModel> getWeatherApiResponse(String lat, String lon) async {
     WeatherDataModel myResponse;
     // try {
-      dynamic response = await apiServices.getGetApiResponse(getUrl(lat, lon));
-      debugPrint(response.toString());
-      if (response != null) {
-        return myResponse = WeatherDataModel.fromJson(response);
-      } else {
-        throw FetchDataException("No Data");
-      }
-      // } on SocketException {
-      //   Utils.toastmessage("No Internet Connection");
+    dynamic response = await apiServices.getGetApiResponse(getUrl(lat, lon));
+    // debugPrint(response.toString());
+    if (response != null) {
+      return myResponse = WeatherDataModel.fromJson(response);
+    } else {
+      throw FetchDataException("No Data");
+    }
+    // } on SocketException {
+    //   Utils.toastmessage("No Internet Connection");
     // } on SocketException {
     //   ApiResponse.error("No Internet Connection");
     //   Utils.toastmessage("No Internet Connection");

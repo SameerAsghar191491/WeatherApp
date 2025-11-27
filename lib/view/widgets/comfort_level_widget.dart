@@ -4,8 +4,8 @@ import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 import 'package:weatherapp_starter_project/resources/custom_colors.dart';
 import 'package:weatherapp_starter_project/view_model/get_location_&_weather_data_view_model.dart';
 
-class ConfortLevelWidget extends StatelessWidget {
-  const ConfortLevelWidget({super.key});
+class ComfortLevelWidget extends StatelessWidget {
+  const ComfortLevelWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +36,14 @@ class ConfortLevelWidget extends StatelessWidget {
                 .round()
                 .toDouble(),
             appearance: CircularSliderAppearance(
+              size: 140,
               animationEnabled: true,
               infoProperties: InfoProperties(
+                mainLabelStyle: TextStyle(
+                  color: Colors.grey.shade700,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 28,
+                ),
                 bottomLabelText: 'Humidity',
                 bottomLabelStyle: TextStyle(
                   color: Colors.grey.shade700,
@@ -46,10 +52,7 @@ class ConfortLevelWidget extends StatelessWidget {
                 ),
               ),
               customColors: CustomSliderColors(
-                trackColors: [
-                  CustomColors.firstGradientColor.withAlpha(150),
-                  CustomColors.secondGradientColor.withAlpha(150),
-                ],
+                trackColor: CustomColors.firstGradientColor.withAlpha(100),
                 progressBarColors: [
                   CustomColors.firstGradientColor,
                   CustomColors.secondGradientColor,

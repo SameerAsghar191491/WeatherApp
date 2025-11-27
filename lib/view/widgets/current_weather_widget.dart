@@ -10,7 +10,6 @@ class CurrentWeatherWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    try {
       return Column(
         // mainAxisAlignment: MainAxisAlignment.center,
         // crossAxisAlignment: CrossAxisAlignment.center,
@@ -20,11 +19,6 @@ class CurrentWeatherWidget extends StatelessWidget {
           currentWeatherDetails(context),
         ],
       );
-    } catch (e) {
-      debugPrint(e.toString());
-      Utils.toastmessage(e.toString());
-    }
-    return Center(child: Text('No Data'));
   }
 }
 

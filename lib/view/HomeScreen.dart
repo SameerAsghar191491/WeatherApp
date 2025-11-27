@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:weatherapp_starter_project/data/status/status.dart';
-import 'package:weatherapp_starter_project/view/widgets/confort_level_widget.dart';
+import 'package:weatherapp_starter_project/resources/custom_colors.dart';
+import 'package:weatherapp_starter_project/view/widgets/comfort_level_widget.dart';
 import 'package:weatherapp_starter_project/view/widgets/current_weather_widget.dart';
 import 'package:weatherapp_starter_project/view/widgets/daily_weather_widget.dart';
 import 'package:weatherapp_starter_project/view/widgets/header_widget.dart';
@@ -38,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     debugPrint('build function called');
     // ignore: unused_local_variable
-    // final weatherData_VM_provider = Provider.of<GetLocationViewModel>(
+    // final WDVMProvider = Provider.of<GL_WD_ViewModel>(
     //   context,
     //   listen: false,
     // );
@@ -51,7 +52,22 @@ class _HomeScreenState extends State<HomeScreen> {
             debugPrint('selector function called');
             switch (value) {
               case Status.LOADING:
-                return Center(child: CircularProgressIndicator());
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/icons/clouds.png",
+                        height: 120,
+                        width: 120,
+                      ),
+                      SizedBox(height: 20),
+                      CircularProgressIndicator(
+                        color: CustomColors.firstGradientColor,
+                      ),
+                    ],
+                  ),
+                );
               case Status.ERROR:
                 return Center(
                   // child: Text(context.read<GL_WD_ViewModel>().apiResponse.message.toString()),
@@ -88,10 +104,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     // Container(
                     // color: Colors.amber,
                     // child:
-                    const ConfortLevelWidget(),
+                    const ComfortLevelWidget(),
                   ],
                 );
-                // return Center(child: Container(child: Text("Done")));
+              // return Center(child: Container(child: Text("Done")));
             }
           },
         ),
