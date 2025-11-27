@@ -48,7 +48,7 @@ class DailyWeatherWidget extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Container(
+                          SizedBox(
                             height: 20,
                             width: 30,
                             // color: Colors.amber,
@@ -68,7 +68,7 @@ class DailyWeatherWidget extends StatelessWidget {
                             "assets/weather/${dwProvider.apiResponse.data!.daily![index].weather![0].icon}.png",
                           ),
                           // SizedBox(width: 10),
-                          Container(
+                          SizedBox(
                             height: 20,
                             width: 50,
                             // color: Colors.amber,

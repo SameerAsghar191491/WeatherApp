@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weatherapp_starter_project/resources/custom_colors.dart';
-import 'package:weatherapp_starter_project/utils/Utils.dart';
 import 'package:weatherapp_starter_project/view_model/get_location_&_weather_data_view_model.dart';
 
 class CurrentWeatherWidget extends StatelessWidget {
@@ -10,15 +8,15 @@ class CurrentWeatherWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      return Column(
-        // mainAxisAlignment: MainAxisAlignment.center,
-        // crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          currentWeatherTemperature(context),
-          const SizedBox(height: 20),
-          currentWeatherDetails(context),
-        ],
-      );
+    return Column(
+      // mainAxisAlignment: MainAxisAlignment.center,
+      // crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        currentWeatherTemperature(context),
+        const SizedBox(height: 20),
+        currentWeatherDetails(context),
+      ],
+    );
   }
 }
 
@@ -72,7 +70,11 @@ Widget currentWeatherDetails(BuildContext context) {
             child: Text(
               "${cwProvider.apiResponse.data!.current!.windSpeed!.toDouble()}km/h",
               textAlign: TextAlign.center,
-              style: TextStyle(fontWeight: FontWeight.w500),
+              style: TextStyle(
+                color: Colors.grey.shade700,
+                fontWeight: FontWeight.w600,
+                fontSize: 14,
+              ),
             ),
           ),
           SizedBox(
@@ -82,7 +84,11 @@ Widget currentWeatherDetails(BuildContext context) {
               "${cwProvider.apiResponse.data!.current!.clouds!.toInt()}%",
 
               textAlign: TextAlign.center,
-              style: TextStyle(fontWeight: FontWeight.w500),
+              style: TextStyle(
+                color: Colors.grey.shade700,
+                fontWeight: FontWeight.w600,
+                fontSize: 14,
+              ),
             ),
           ),
           SizedBox(
@@ -92,7 +98,11 @@ Widget currentWeatherDetails(BuildContext context) {
               "${cwProvider.apiResponse.data!.current!.humidity!.toInt()}%",
 
               textAlign: TextAlign.center,
-              style: TextStyle(fontWeight: FontWeight.w500),
+              style: TextStyle(
+                color: Colors.grey.shade700,
+                fontWeight: FontWeight.w600,
+                fontSize: 14,
+              ),
             ),
           ),
         ],
@@ -126,7 +136,8 @@ Widget currentWeatherTemperature(BuildContext context) {
               ),
             ),
             TextSpan(
-              text: cwProvider.apiResponse.data!.current!.weather![0].main.toString(),
+              text: cwProvider.apiResponse.data!.current!.weather![0].main
+                  .toString(),
               style: const TextStyle(
                 fontSize: 14,
                 color: CustomColors.textColorBlack,

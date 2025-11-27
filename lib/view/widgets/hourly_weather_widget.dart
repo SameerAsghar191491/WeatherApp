@@ -15,7 +15,7 @@ class HourlyWeatherWidget extends StatelessWidget {
     final hourlyWeatherLength = hwProvider.apiResponse.data!.hourly!.length > 12
         ? 12
         : hwProvider.apiResponse.data!.hourly!.length;
-    return Container(
+    return SizedBox(
       height: height * .22,
       // color: Colors.amber,
       // margin: EdgeInsets.only(top: 10, bottom: 10),

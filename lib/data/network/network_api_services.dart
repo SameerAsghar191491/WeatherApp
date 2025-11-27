@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:weatherapp_starter_project/data/app_exceptions.dart';
 import 'package:weatherapp_starter_project/data/network/base_api_services.dart';
 import 'package:http/http.dart' as http;
-import 'package:weatherapp_starter_project/data/status/api_response.dart';
 import 'package:weatherapp_starter_project/utils/Utils.dart';
 
 class NetworkApiServices implements BaseApiServices {

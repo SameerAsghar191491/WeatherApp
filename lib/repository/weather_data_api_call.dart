@@ -1,13 +1,9 @@
-import 'dart:io';
 
-import 'package:flutter/material.dart';
 import 'package:weatherapp_starter_project/data/app_exceptions.dart';
 import 'package:weatherapp_starter_project/data/network/base_api_services.dart';
 import 'package:weatherapp_starter_project/data/network/network_api_services.dart';
-import 'package:weatherapp_starter_project/data/status/api_response.dart';
 import 'package:weatherapp_starter_project/repository/api_endpoints.dart';
 import 'package:weatherapp_starter_project/models/weather_data_model.dart';
-import 'package:weatherapp_starter_project/utils/Utils.dart';
 
 class WeatherDataApiCall {
   BaseApiServices apiServices = NetworkApiServices();

@@ -67,6 +67,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
           child: Text(
             date,
             style: TextStyle(
+              // backgroundColor: Colors.amber,
               fontSize: 14,
               color: Colors.grey.shade700,
               height: 1.5,
