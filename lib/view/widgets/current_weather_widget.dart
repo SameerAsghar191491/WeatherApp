@@ -76,7 +76,7 @@ Widget currentWeatherDetails(BuildContext context) {
             height: 20,
             width: 60,
             child: Text(
-              "${cwProvider.weatherData.current!.windSpeed!.toDouble()}km/h",
+              "${cwProvider.apiResponse.data!.current!.windSpeed!.toDouble()}km/h",
               textAlign: TextAlign.center,
               style: TextStyle(fontWeight: FontWeight.w500),
             ),
@@ -85,7 +85,7 @@ Widget currentWeatherDetails(BuildContext context) {
             height: 20,
             width: 60,
             child: Text(
-              "${cwProvider.weatherData.current!.clouds!.toInt()}%",
+              "${cwProvider.apiResponse.data!.current!.clouds!.toInt()}%",
 
               textAlign: TextAlign.center,
               style: TextStyle(fontWeight: FontWeight.w500),
@@ -95,7 +95,7 @@ Widget currentWeatherDetails(BuildContext context) {
             height: 20,
             width: 60,
             child: Text(
-              "${cwProvider.weatherData.current!.humidity!.toInt()}%",
+              "${cwProvider.apiResponse.data!.current!.humidity!.toInt()}%",
 
               textAlign: TextAlign.center,
               style: TextStyle(fontWeight: FontWeight.w500),
@@ -116,7 +116,7 @@ Widget currentWeatherTemperature(BuildContext context) {
         // alignment: AlignmentGeometry.topLeft,
         height: 80,
         width: 80,
-        "assets/weather/${cwProvider.weatherData.current!.weather![0].icon}.png",
+        "assets/weather/${cwProvider.apiResponse.data!.current!.weather![0].icon}.png",
       ),
       Container(height: 50, width: 1, color: CustomColors.dividerLine),
       RichText(
@@ -124,7 +124,7 @@ Widget currentWeatherTemperature(BuildContext context) {
           children: [
             TextSpan(
               text:
-                  "${cwProvider.weatherData.current!.temp!.toInt().toString()}°",
+                  "${cwProvider.apiResponse.data!.current!.temp!.toInt().toString()}°",
               style: const TextStyle(
                 fontSize: 68,
                 color: CustomColors.textColorBlack,
@@ -132,7 +132,7 @@ Widget currentWeatherTemperature(BuildContext context) {
               ),
             ),
             TextSpan(
-              text: cwProvider.weatherData.current!.weather![0].main.toString(),
+              text: cwProvider.apiResponse.data!.current!.weather![0].main.toString(),
               style: const TextStyle(
                 fontSize: 14,
                 color: CustomColors.textColorBlack,

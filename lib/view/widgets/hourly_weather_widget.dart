@@ -12,9 +12,9 @@ class HourlyWeatherWidget extends StatelessWidget {
     final hwProvider = Provider.of<GL_WD_ViewModel>(context);
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
-    final hourlyWeatherLength = hwProvider.weatherData.hourly!.length > 12
+    final hourlyWeatherLength = hwProvider.apiResponse.data!.hourly!.length > 12
         ? 12
-        : hwProvider.weatherData.hourly!.length;
+        : hwProvider.apiResponse.data!.hourly!.length;
     return Container(
       height: height * .22,
       // color: Colors.amber,
@@ -42,7 +42,7 @@ class HourlyWeatherWidget extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: hourlyWeatherLength,
                   itemBuilder: (context, index) {
-                    final timeStamp = hwProvider.weatherData.hourly![index].dt;
+                    final timeStamp = hwProvider.apiResponse.data!.hourly![index].dt;
                     // final selectedIndex = selectedContainer(index);
                     return Padding(
                       padding: const EdgeInsets.only(left: 15, right: 10),
@@ -56,6 +56,7 @@ class HourlyWeatherWidget extends StatelessWidget {
                           // height: height * 0.1,
                           // color: Colors.amber,
                           width: width * 0.22,
+                          // width: 87,
                           decoration: BoxDecoration(
                             gradient: value == index
                                 ? LinearGradient(
@@ -100,11 +101,11 @@ class HourlyWeatherWidget extends StatelessWidget {
                               Image.asset(
                                 height: height * 0.05,
                                 // width: width * 0.12,
-                                "assets/weather/${hwProvider.weatherData.hourly![index].weather![0].icon.toString()}.png",
+                                "assets/weather/${hwProvider.apiResponse.data!.hourly![index].weather![0].icon.toString()}.png",
                                 // fit: BoxFit.cover,
                               ),
                               Text(
-                                "${hwProvider.weatherData.hourly![index].temp!.toInt().toString()}°",
+                                "${hwProvider.apiResponse.data!.hourly![index].temp!.toInt().toString()}°",
                                 style: TextStyle(
                                   color: value == index
                                       ? Colors.white

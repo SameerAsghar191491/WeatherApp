@@ -40,14 +40,18 @@ class WeatherDataModel {
 
 class Current {
   int? temp;
+  double? feels_like;
   int? humidity;
+  double? uvi;
   int? clouds;
   double? windSpeed;
   List<Weather>? weather;
 
   Current({
     this.temp,
+    this.feels_like,
     this.humidity,
+    this.uvi,
     this.clouds,
     this.windSpeed,
     this.weather,
@@ -55,7 +59,9 @@ class Current {
 
   Current.fromJson(Map<String, dynamic> json) {
     temp = (json['temp'] as num).round();
+    feels_like = (json['feels_like'] as num?)?.toDouble();
     humidity = (json['humidity']);
+    uvi = (json['uvi'] as num?)?.toDouble();
     clouds = json['clouds'];
     windSpeed = (json['wind_speed'] as num?)?.toDouble();
     if (json['weather'] != null) {
@@ -69,7 +75,9 @@ class Current {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['temp'] = temp;
+    data['feels_like'] = feels_like;
     data['humidity'] = humidity;
+    data['uvi'] = uvi;
     data['clouds'] = clouds;
     data['wind_speed'] = windSpeed;
     if (weather != null) {

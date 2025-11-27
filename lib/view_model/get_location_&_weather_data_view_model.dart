@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:weatherapp_starter_project/data/app_exceptions.dart';
+import 'package:weatherapp_starter_project/data/status/api_response.dart';
 import 'package:weatherapp_starter_project/models/weather_data_model.dart';
 import 'package:weatherapp_starter_project/repository/weather_data_api_call.dart';
 import 'package:weatherapp_starter_project/utils/Utils.dart';
@@ -21,10 +22,17 @@ class GL_WD_ViewModel with ChangeNotifier {
 
   WeatherDataApiCall weatherDataApiCall = WeatherDataApiCall();
 
+  ApiResponse<WeatherDataModel> apiResponse = ApiResponse.loading();
+
   WeatherDataModel weatherData = WeatherDataModel();
 
   void setWeatherDataintoModel(newValue) {
     weatherData = newValue;
+  }
+
+  void setApiResponse(ApiResponse<WeatherDataModel> newValue) {
+    apiResponse = newValue;
+    notifyListeners();
   }
 
   void setloading(bool newValue) {
@@ -67,6 +75,7 @@ class GL_WD_ViewModel with ChangeNotifier {
           locationSettings: LocationSettings(accuracy: LocationAccuracy.high),
         )
         .then((value) {
+          setApiResponse(ApiResponse.loading());
           _latitude = value.latitude;
           _longitude = value.longitude;
           // debugPrint("$_latitude");
@@ -77,11 +86,14 @@ class GL_WD_ViewModel with ChangeNotifier {
                 getlongitude.toString(),
               )
               .then((value) {
-                setWeatherDataintoModel(value);
-                setloading(false);
+                // setWeatherDataintoModel(value);
+                setApiResponse(ApiResponse.completed(value));
+                // setloading(false);
               });
         })
         .onError((error, stackTrace) {
+          // setloading(false);
+          setApiResponse(ApiResponse.error(error.toString()));
           Utils.toastmessage(error.toString());
         });
   }

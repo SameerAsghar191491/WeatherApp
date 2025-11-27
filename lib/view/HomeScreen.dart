@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:weatherapp_starter_project/data/status/status.dart';
+import 'package:weatherapp_starter_project/view/widgets/confort_level_widget.dart';
 import 'package:weatherapp_starter_project/view/widgets/current_weather_widget.dart';
 import 'package:weatherapp_starter_project/view/widgets/daily_weather_widget.dart';
 import 'package:weatherapp_starter_project/view/widgets/header_widget.dart';
@@ -43,37 +45,54 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       body: SafeArea(
-        child: Selector<GL_WD_ViewModel, bool>(
-          selector: (_, provider) => provider.getLoading,
+        child: Selector<GL_WD_ViewModel, Status>(
+          selector: (_, provider) => provider.apiResponse.status!,
           builder: (context, value, child) {
             debugPrint('selector function called');
-            return value
-                ? Center(child: CircularProgressIndicator())
-                : ListView(
-                    scrollDirection: Axis.vertical,
-                    children: [
-                      SizedBox(height: 20),
-                      // Container(
-                      // color: Colors.amber,
-                      // child:
-                      const HeaderWidget(),
-                      // ),
-                      SizedBox(height: 20),
-                      // Container(
-                      // color: Colors.amber,
-                      // child:
-                      const CurrentWeatherWidget(),
-                      // ),
-                      SizedBox(height: 20),
-                      // Container(
-                      // color: Colors.amber,
-                      // child:
-                      const HourlyWeatherWidget(),
-                      SizedBox(height: 20),
-                      // ),
-                      const DailyWeatherWidget(),
-                    ],
-                  );
+            switch (value) {
+              case Status.LOADING:
+                return Center(child: CircularProgressIndicator());
+              case Status.ERROR:
+                return Center(
+                  // child: Text(context.read<GL_WD_ViewModel>().apiResponse.message.toString()),
+                  child: Text("Something Is Wrong"),
+                );
+              case Status.COMPLETED:
+                return ListView(
+                  scrollDirection: Axis.vertical,
+                  children: [
+                    SizedBox(height: 20),
+                    // Container(
+                    // color: Colors.amber,
+                    // child:
+                    const HeaderWidget(),
+                    // ),
+                    SizedBox(height: 20),
+                    // Container(
+                    // color: Colors.amber,
+                    // child:
+                    const CurrentWeatherWidget(),
+                    // ),
+                    SizedBox(height: 20),
+                    // Container(
+                    // color: Colors.amber,
+                    // child:
+                    const HourlyWeatherWidget(),
+                    SizedBox(height: 20),
+                    // ),
+                    // Container(
+                    // color: Colors.amber,
+                    // child:
+                    const DailyWeatherWidget(),
+                    // ),
+                    // Container(
+                    // color: Colors.amber,
+                    // child:
+                    const ConfortLevelWidget(),
+                  ],
+                );
+                return Center(child: Container(child: Text("Done")));
+            }
           },
         ),
       ),

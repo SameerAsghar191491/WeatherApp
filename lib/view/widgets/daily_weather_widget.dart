@@ -10,9 +10,9 @@ class DailyWeatherWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dwProvider = Provider.of<GL_WD_ViewModel>(context);
-    final dailyWeatherLength = dwProvider.weatherData.daily!.length > 7
+    final dailyWeatherLength = dwProvider.apiResponse.data!.daily!.length > 7
         ? 7
-        : dwProvider.weatherData.daily!.length;
+        : dwProvider.apiResponse.data!.daily!.length;
     return Container(
       height: 400,
       margin: EdgeInsets.all(20),
@@ -38,24 +38,49 @@ class DailyWeatherWidget extends StatelessWidget {
             child: ListView.builder(
               itemCount: dailyWeatherLength,
               itemBuilder: (context, index) {
-                final stamp = dwProvider.weatherData.daily![index].dt;
+                final stamp = dwProvider.apiResponse.data!.daily![index].dt;
                 return Column(
                   // mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
-                      margin: EdgeInsets.all(10),
+                      // color: Colors.amber,
+                      margin: EdgeInsets.all(20),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(getDay(stamp)),
-                          SizedBox(width: 20),
+                          Container(
+                            height: 20,
+                            width: 30,
+                            // color: Colors.amber,
+                            child: Text(
+                              getDay(stamp),
+                              style: TextStyle(
+                                color: Colors.grey.shade700,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 10),
                           Image.asset(
                             height: 30,
                             width: 30,
-                            "assets/weather/${dwProvider.weatherData.daily![index].weather![0].icon}.png",
+                            "assets/weather/${dwProvider.apiResponse.data!.daily![index].weather![0].icon}.png",
                           ),
-                          SizedBox(width: 10),
-                          Text("Hello"),
+                          // SizedBox(width: 10),
+                          Container(
+                            height: 20,
+                            width: 50,
+                            // color: Colors.amber,
+                            child: Text(
+                              "${dwProvider.apiResponse.data!.daily![index].temp!.max!.toInt()}°/${dwProvider.apiResponse.data!.daily![index].temp!.min!.toInt()}",
+                              style: TextStyle(
+                                color: Colors.grey.shade700,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),

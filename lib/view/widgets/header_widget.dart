@@ -34,7 +34,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
 
   getAddress(lat, lon) async {
     List<Placemark> placemark = await placemarkFromCoordinates(lat, lon);
-    // print(placemark[0]);
+    print(placemark[0]);
     // print("lat: $lat, lon: $lon");
     setState(() {
       city = placemark[0].locality!;

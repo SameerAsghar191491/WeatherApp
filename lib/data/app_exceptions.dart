@@ -40,3 +40,7 @@ class InternalServerException extends AppExceptions {
 class LocationNotEnabledException extends AppExceptions {
   LocationNotEnabledException([String? message]) : super(message, 'LocationNotEnabledException: ');
 }
+
+class IOException extends AppExceptions {
+  IOException([String? message]) : super(message, 'No Internet : ');
+}
