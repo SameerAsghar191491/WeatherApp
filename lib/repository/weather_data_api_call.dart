@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:weatherapp_starter_project/data/app_exceptions.dart';
 import 'package:weatherapp_starter_project/data/network/base_api_services.dart';
 import 'package:weatherapp_starter_project/data/network/network_api_services.dart';
@@ -13,24 +14,27 @@ class WeatherDataApiCall {
 
   Future<WeatherDataModel> getWeatherApiResponse(String lat, String lon) async {
     WeatherDataModel myResponse;
-    try {
+    // try {
       dynamic response = await apiServices.getGetApiResponse(getUrl(lat, lon));
-      if (response == null) {
-        ApiResponse.error("No Data");
+      debugPrint(response.toString());
+      if (response != null) {
+        return myResponse = WeatherDataModel.fromJson(response);
+      } else {
+        throw FetchDataException("No Data");
       }
-      return myResponse = WeatherDataModel.fromJson(response);
       // } on SocketException {
       //   Utils.toastmessage("No Internet Connection");
-    } on SocketException {
-      ApiResponse.error("No Internet Connection");
-      Utils.toastmessage("No Internet Connection");
-      throw IOException("No Internet Connection");
-    } catch (e) {
-      // debugPrint(e.toString());
-      Utils.toastmessage(e.toString());
-      throw FetchDataException(e.toString());
-      // return null;
-    }
+    // } on SocketException {
+    //   ApiResponse.error("No Internet Connection");
+    //   Utils.toastmessage("No Internet Connection");
+    //   throw IOException("No Internet Connection");
+    // } catch (e) {
+    //   // debugPrint(e.toString());
+    //   // Utils.toastmessage(e.toString());
+    //   ApiResponse.error(e.toString());
+    //   // throw FetchDataException(e.toString());
+    //   // return null;
+    // }
   }
 
   String getUrl(lat, lon) {

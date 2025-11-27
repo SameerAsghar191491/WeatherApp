@@ -13,10 +13,12 @@ class NetworkApiServices implements BaseApiServices {
     // dynamic jsonResponse;
     try {
       dynamic response = await http.get(Uri.parse(url));
-      if (response == null) {
+      debugPrint(response.toString());
+      if (response != null) {
+      return response = getJsonResponse(response);
+      } else {
         throw FetchDataException("No Data");
       }
-      return response = getJsonResponse(response);
     } on SocketException {
       ApiResponse.error("No Internet Connection");
       Utils.toastmessage("No Internet Connection");

@@ -94,7 +94,7 @@ class GL_WD_ViewModel with ChangeNotifier {
         .onError((error, stackTrace) {
           // setloading(false);
           setApiResponse(ApiResponse.error(error.toString()));
-          Utils.toastmessage(error.toString());
+          // Utils.toastmessage(error.toString());
         });
   }
 }
