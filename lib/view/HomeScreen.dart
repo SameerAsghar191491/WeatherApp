@@ -78,32 +78,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   scrollDirection: Axis.vertical,
                   children: [
                     SizedBox(height: 20),
-                    // Container(
-                    // color: Colors.amber,
-                    // child:
                     const HeaderWidget(),
-                    // ),
                     SizedBox(height: 20),
-                    // Container(
-                    // color: Colors.amber,
-                    // child:
                     const CurrentWeatherWidget(),
-                    // ),
                     SizedBox(height: 20),
-                    // Container(
-                    // color: Colors.amber,
-                    // child:
                     const HourlyWeatherWidget(),
                     SizedBox(height: 20),
-                    // ),
-                    // Container(
-                    // color: Colors.amber,
-                    // child:
                     const DailyWeatherWidget(),
-                    // ),
-                    // Container(
-                    // color: Colors.amber,
-                    // child:
                     const ComfortLevelWidget(),
                   ],
                 );

@@ -16,7 +16,8 @@ class HourlyWeatherWidget extends StatelessWidget {
         ? 12
         : hwProvider.apiResponse.data!.hourly!.length;
     return SizedBox(
-      height: height * .22,
+      // height: height * .22,
+      height: 182,
       // color: Colors.amber,
       // margin: EdgeInsets.only(top: 10, bottom: 10),
       child: Column(
@@ -56,8 +57,8 @@ class HourlyWeatherWidget extends StatelessWidget {
                         child: Container(
                           // height: height * 0.1,
                           // color: Colors.amber,
-                          width: width * 0.22,
-                          // width: 87,
+                          // width: width * 0.22,
+                          width: 87,
                           decoration: BoxDecoration(
                             gradient: value == index
                                 ? LinearGradient(
@@ -99,11 +100,14 @@ class HourlyWeatherWidget extends StatelessWidget {
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
-                              Image.asset(
-                                height: height * 0.05,
-                                // width: width * 0.12,
-                                "assets/weather/${hwProvider.apiResponse.data!.hourly![index].weather![0].icon.toString()}.png",
-                                // fit: BoxFit.cover,
+                              Container(
+                                height: 42,
+                                child: Image.asset(
+                                  // height: height * 0.05,
+                                  // width: width * 0.12,
+                                  "assets/weather/${hwProvider.apiResponse.data!.hourly![index].weather![0].icon.toString()}.png",
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                               Text(
                                 "${hwProvider.apiResponse.data!.hourly![index].temp!.toInt().toString()}°",
