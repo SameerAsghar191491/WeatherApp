@@ -38,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
 
     debugPrint('build function called');
+
     // ignore: unused_local_variable
     // final WDVMProvider = Provider.of<GL_WD_ViewModel>(
     //   context,
