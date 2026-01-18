@@ -31,7 +31,7 @@ The project focuses on clean code structure, proper state management, API handli
 
 ## 💡 Project Inspiration
 
-The idea for this project is inspired by YouTuber BackSlash Flutter, who created a similar Weather App using GetX and MVC Architecture.
+The idea for this project is inspired by YouTuber **BackSlash Flutter**, who created this Weather App using GetX and MVC Architecture.
 
 To test and strengthen my own learning, I rebuilt this project almost entirely on my own, implementing it using MVVM Architecture along with the Provider State Management Solution.
 
