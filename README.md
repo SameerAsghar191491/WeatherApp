@@ -1,10 +1,10 @@
-🌦️ Weather App – Flutter | MVVM Architecture
+# 🌦️ Weather App – Flutter | MVVM Architecture
 
 A modern Weather Application built using Flutter and structured with the MVVM architecture. This app fetches real-time weather data through API integration and displays current, hourly, and daily forecasts with a clean and responsive UI using Provider State Management.
 
 The project focuses on clean code structure, proper state management, API handling, and scalable architecture, making it suitable for real-world production use and learning purposes.
 
-✨ Key Highlights
+## ✨ Key Highlights
 
 • 🧩 Clean MVVM architecture
 
@@ -18,7 +18,7 @@ The project focuses on clean code structure, proper state management, API handli
 
 • 🚀 Optimized for performance
 
-📸 Screenshots
+## 📸 Screenshots
 
 <p align="start"> <img src="assets/project_images/SplashScreen.jpg" width="220"/> 
  <img src="assets/project_images/HomeScreen.jpg" width="220"/> 
@@ -26,7 +26,7 @@ The project focuses on clean code structure, proper state management, API handli
 </p>
 
 
-💡 Project Inspiration
+## 💡 Project Inspiration
 
 The idea for this project is inspired by YouTuber BackSlash Flutter, who created a similar Weather App using GetX and MVC Architecture.
 
@@ -34,7 +34,7 @@ To test and strengthen my own learning, I rebuilt this project almost entirely o
 
 This approach helped me gain deeper insights into architecture design, state management, and scalable Flutter app development.
 
-🧑‍💻 Author
+## 🧑‍💻 Author
 Mirza Sameer Asghar
 
 Flutter Developer & Learner
