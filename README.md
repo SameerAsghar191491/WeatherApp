@@ -18,6 +18,8 @@ The project focuses on clean code structure, proper state management, API handli
 
 • 🚀 Optimized for performance
 
+---
+
 ## 📸 Screenshots
 
 <p align="start"> <img src="assets/project_images/SplashScreen.jpg" width="220"/> 
@@ -25,6 +27,7 @@ The project focuses on clean code structure, proper state management, API handli
  <img src="assets/project_images/HomeScreen2.jpg" width="220"/> 
 </p>
 
+---
 
 ## 💡 Project Inspiration
 
