@@ -29,6 +29,25 @@ The project focuses on clean code structure, proper state management, API handli
 
 ---
 
+🚀 Tech Stack Used
+
+🧰 Flutter – Cross-platform UI toolkit (Android, iOS, Web & Desktop)
+
+📦 Dart – Programming language for Flutter apps
+
+🧠 MVVM Architecture – Clean separation of UI & business logic
+
+📊 Provider – State management solution for reactive UI
+
+🌐 REST API Integration – Fetches real-time weather data
+
+📱 Responsive UI – Works across mobile, web & desktop targets
+
+🔄 Error Handling & Loading States – Better UX during data loads
+
+📱 Platform Support – Android, iOS, Web, Linux, macOS, Windows
+
+
 ## 💡 Project Inspiration
 
 The idea for this project is inspired by YouTuber **BackSlash Flutter**, who created this Weather App using GetX and MVC Architecture.
